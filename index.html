@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B.Ed மாணவர் கருத்துக்கணிப்பு</title>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      font-family: 'Segoe UI', 'Latha', 'Tamil Sangam MN', sans-serif; 
+    }
+
+    /* Vibrant Mesh Gradient Background for Glassmorphism */
+    body { 
+      background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+      background-attachment: fixed;
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      padding: 30px 15px; 
+    }
+    
+    /* Premium Glassmorphism Card */
+    .glass-card { 
+      background: rgba(255, 255, 255, 0.65); 
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.8); 
+      width: 100%; 
+      max-width: 680px; 
+      padding: 40px; 
+      border-radius: 24px; 
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); 
+    }
+
+    .form-header { 
+      text-align: center; 
+      margin-bottom: 30px; 
+    }
+
+    .form-header h2 { 
+      color: #2b2d42; 
+      font-size: 1.8rem; 
+      margin-bottom: 8px; 
+      font-weight: 700;
+    }
+
+    .form-header p { 
+      color: #52575d; 
+      font-size: 0.95rem; 
+      line-height: 1.6; 
+    }
+    
+    /* Light Frosted Welcome Box */
+    .welcome-box { 
+      background: rgba(255, 255, 255, 0.7); 
+      border-left: 4px solid #6c5ce7; 
+      padding: 22px; 
+      border-radius: 12px; 
+      margin-bottom: 30px; 
+      color: #2d3436; 
+      line-height: 1.8; 
+      font-size: 0.98rem; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .experience-insights {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px dashed rgba(108, 92, 231, 0.3);
+    }
+
+    .experience-insights h4 {
+      color: #6c5ce7;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .experience-insights ul {
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    .experience-insights li {
+      margin-bottom: 6px;
+    }
+    
+    .form-group { 
+      margin-bottom: 26px; 
+    }
+
+    .form-group label { 
+      display: block; 
+      font-weight: 600; 
+      color: #2d3436; 
+      margin-bottom: 12px; 
+      line-height: 1.6; 
+      font-size: 1rem;
+    }
+
+    .form-group label i { 
+      margin-right: 8px; 
+      color: #6c5ce7; 
+    }
+    
+    .form-control { 
+      width: 100%; 
+      padding: 14px 18px; 
+      background: rgba(255, 255, 255, 0.8); 
+      border: 1.5px solid rgba(200, 200, 200, 0.5); 
+      border-radius: 12px; 
+      color: #2d3436; 
+      font-size: 1rem; 
+      transition: all 0.3s ease; 
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .form-control:focus { 
+      outline: none; 
+      border-color: #6c5ce7; 
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.15);
+    }
+
+    textarea.form-control { 
+      resize: vertical; 
+      min-height: 120px; 
+    }
+    
+    .radio-group { 
+      display: flex; 
+      gap: 30px; 
+      margin-top: 10px; 
+    }
+
+    .radio-option { 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      font-weight: 600; 
+      cursor: pointer; 
+      color: #4a5568; 
+      background: rgba(255, 255, 255, 0.5);
+      padding: 8px 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(220, 220, 220, 0.6);
+      transition: all 0.2s ease;
+    }
+
+    .radio-option:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .radio-option input[type="radio"] { 
+      accent-color: #6c5ce7; 
+      width: 18px; 
+      height: 18px; 
+      cursor: pointer; 
+    }
+    
+    .btn-submit { 
+      width: 100%; 
+      padding: 16px; 
+      background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%); 
+      color: #ffffff; 
+      border: none; 
+      border-radius: 12px; 
+      font-size: 1.1rem; 
+      font-weight: 600; 
+      cursor: pointer; 
+      transition: all 0.3s ease; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      gap: 10px; 
+      box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+      margin-top: 15px; 
+    }
+
+    .btn-submit:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(108, 92, 231, 0.4);
+    }
+    
+    /* Step Display Logic */
+    .step { display: none; }
+    .step.active { display: block; }
+
+    /* Glassmorphism Popup Modal */
+    .modal-overlay { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: rgba(0, 0, 0, 0.3); 
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      opacity: 0; 
+      visibility: hidden; 
+      transition: all 0.3s ease; 
+      z-index: 1000; 
+    }
+
+    .modal-overlay.active { 
+      opacity: 1; 
+      visibility: visible; 
+    } 
+    
+    .modal-card { 
+      background: rgba(255, 255, 255, 0.85); 
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.9); 
+      padding: 40px; 
+      border-radius: 24px; 
+      text-align: center; 
+      max-width: 460px; 
+      width: 90%; 
+      transform: scale(0.8); 
+      transition: transform 0.3s ease; 
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .modal-overlay.active .modal-card { transform: scale(1); }
+    
+    .icon-box { 
+      width: 85px; 
+      height: 85px; 
+      background: #e8f5e9; 
+      color: #2e7d32; 
+      border-radius: 50%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-size: 2.8rem; 
+      margin: 0 auto 20px; 
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+      box-shadow: 0 10px 20px rgba(46, 125, 50, 0.15);
+    }
+
+    .icon-box.timer-icon {
+      background: #e0f2fe;
+      color: #0284c7;
+      box-shadow: 0 10px 20px rgba(2, 132, 199, 0.15);
+    }
+
+    .modal-card h3 { 
+      color: #2d3436; 
+      font-size: 1.6rem; 
+      margin-bottom: 12px; 
+      font-weight: 700;
+    }
+
+    .modal-card p { 
+      color: #636e72; 
+      font-size: 1rem; 
+      margin-bottom: 20px; 
+      line-height: 1.7; 
+    }
+
+    .timer-badge {
+      display: inline-block;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #6c5ce7;
+      background: rgba(108, 92, 231, 0.1);
+      padding: 8px 24px;
+      border-radius: 50px;
+      margin-top: 10px;
+      border: 1px solid rgba(108, 92, 231, 0.2);
+    }
+    
+    .btn-close { 
+      background: #2e7d32; 
+      color: #ffffff; 
+      padding: 12px 35px; 
+      border: none; 
+      border-radius: 12px; 
+      font-size: 1rem; 
+      font-weight: 600; 
+      cursor: pointer; 
+      transition: all 0.2s; 
+      box-shadow: 0 4px 12px rgba(46, 125, 50, 0.25);
+    }
+
+    .btn-close:hover { 
+      background: #1b5e20; 
+      transform: translateY(-1px);
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); }
+      80% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glass-card">
+    <div class="form-header">
+      <h2><i class="fa-solid fa-graduation-cap"></i> B.Ed மாணவர்களுக்கான கருத்துக்கணிப்பு</h2>
+      <p>உங்கள் கற்றல் அனுபவங்களையும் தேவைகளையும் பகிர்வதற்கான ஒரு சிறப்பு தளம்.</p>
+    </div>
+
+    <form id="bedSurveyForm">
+      
+      <!-- STEP 1: Name Input -->
+      <div class="step active" id="step1">
+        <div class="form-group">
+          <label for="studentName"><i class="fa-solid fa-user-pen"></i> உங்கள் பெயர்</label>
+          <input type="text" id="studentName" name="studentName" class="form-control" placeholder="உங்கள் முழு பெயரை உள்ளிடவும்..." required>
+        </div>
+        <button type="button" class="btn-submit" onclick="goToStep2()">
+          தொடரவும் <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- STEP 2: Main Survey Questions in Tamil -->
+      <div class="step" id="step2">
+        <div class="welcome-box">
+          <p><strong><span id="displayName"></span> அவர்களுக்கு வணக்கம்!</strong></p>
+          <p style="margin-top: 10px;">நமது வாட்ஸ்அப் குழுவில் B.Ed மாணவர்கள் பயன்பெறும் வகையில் முக்கிய வினாக்கள், விடைகள், முந்தைய ஆண்டின் வினாத்தாள்கள், TNTEU சுற்றறிக்கைகள் மற்றும் பதிவுப் குறிப்பேடு (Record Note) PDF-கள் ஆகியவற்றைத் தொடர்ச்சியாகப் பகிர்ந்து வழிகாட்டி வருகிறோம்.</p>
+          
+          <div class="experience-insights">
+            <h4><i class="fa-solid fa-chalkboard-user"></i> இன்றைய B.Ed கல்விச் சூழல் பற்றிய பார்வை:</h4>
+            <p>இன்றைய B.Ed கல்விச் சூழல் நாம் எதிர்பார்த்த முழுமையான நடைமுறைப் பயிற்சி அளவைக் கொண்டிருக்கவில்லை என்பதுதான் நிதர்சனம். தற்காலச் சூழலில் நிலவும் முக்கிய சவால்கள்:</p>
+            <ul>
+              <li><strong>ஏட்டுக்கல்வி முதன்மை:</strong> வகுப்பறை நடைமுறைகளை விட தேர்ச்சி மற்றும் குறிப்பேடுகள் (Record Work) எழுதுவதற்கே அதிக நேரமும் முக்கியத்துவமும் தரப்படுகிறது.</li>
+              <li><strong>தொழில்நுட்பப் பற்றாக்குறை:</strong> நவீன AI கருவிகள், டிஜிட்டல் கற்பித்தல் முறைகள் ஆகியவை பாடத்திட்டத்தில் போதுமான அளவு இணைக்கப்படவில்லை.</li>
+              <li><strong>கற்றல் இடர்பாடுகள்:</strong> பல மாணவர்களுக்கு ஆழமான புரிதலுக்கான புத்தகங்களோ, தெளிவான வழிகாட்டல்களோ எளிதில் கிடைப்பதில்லை.</li>
+            </ul>
+            <p>இந்த இடைவெளியை நிரப்பவே, நீங்கள் இணைய வசதி இல்லாமல் (Offline) பயன்பெறும் வகையில் ஒரு சிறப்புச் செயலியை (App) உருவாக்கத் திட்டமிட்டுள்ளோம். இதற்கு உங்களது உண்மையான கருத்துக்களும் அனுபவங்களும் மிகவும் அவசியமாகும்.</p>
+          </div>
+        </div>
+
+               <div class="form-group">
+          <label for="appFeatures"><i class="fa-solid fa-lightbulb"></i> 1. உருவாக்கப்படவுள்ள இந்தச் செயலியில் என்னென்ன அம்சங்கள் இருக்க வேண்டும் என எதிர்பார்க்கிறீர்கள்?</label>
+          <textarea id="appFeatures" name="appFeatures" class="form-control" placeholder="உங்கள் கருத்துக்களை இங்கே விரிவாகப் பதிவு செய்யவும்..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="bedChallenges"><i class="fa-solid fa-triangle-exclamation"></i> 2. B.Ed படிப்பில் நீங்கள் சந்திக்கும் சவால்கள் என்னென்ன? (எ.கா: பாடங்கள் சரியாகப் புரியவில்லை, கற்றல் புத்தகங்கள் கிடைக்கவில்லை etc.,)</label>
+          <textarea id="bedChallenges" name="bedChallenges" class="form-control" placeholder="உங்கள் கருத்துக்களை இங்கே விரிவாகப் பதிவு செய்யவும்..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-heart"></i> 3. B.Ed படிப்பை நீங்கள் விரும்பியும், ஒரு நல்ல ஆசிரியராக வேண்டும் என்ற விருப்பத்தோடுதான் சேர்ந்தீர்களா?</label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="joinedByInterest" value="ஆம்" required> ஆம்</label>
+            <label class="radio-option"><input type="radio" name="joinedByInterest" value="இல்லை"> இல்லை</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-bookmark"></i> 4. அல்லது ஒரு பட்டப்படிப்பு இருக்கட்டும் என்ற நோக்கத்திலோ வேறு வழியின்றியோ சேர்ந்தீர்களா?</label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="justForDegree" value="ஆம்" required> ஆம்</label>
+            <label class="radio-option"><input type="radio" name="justForDegree" value="இல்லை"> இல்லை</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-book-open-reader"></i> 5. தற்போது 3-ஆம் பருவத்தில் (Semester) இருக்கும் நீங்கள், இதுவரை உங்கள் கல்லூரியில் சிறந்த கற்பித்தல் அனுபவங்களையும் கருத்துக்களையும் கற்றுக்கொண்டதாகக் கருதுகிறீர்களா?</label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="learnedSoFar" value="ஆம்" required> ஆம்</label>
+            <label class="radio-option"><input type="radio" name="learnedSoFar" value="இல்லை"> இல்லை</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-note-sticky"></i> 6. மனப்பாடம் செய்தோ அல்லது தேர்வில் ஏதோ எழுதித் தேர்ச்சி பெற்றால் போதும் என்று நினைக்கிறீர்களா?</label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="passIsEnough" value="ஆம்" required> ஆம்</label>
+            <label class="radio-option"><input type="radio" name="passIsEnough" value="இல்லை"> இல்லை</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-chalkboard-user"></i> 7. பாடங்களை ஆழமாகப் புரிந்து கொண்டு, அதனை எதிர்கால மாணவர்களுக்குச் சரியாகக் கற்பிக்க வேண்டும் என்று விரும்புகிறீர்களா?</label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="applyInTeaching" value="ஆம்" required> ஆம்</label>
+            <label class="radio-option"><input type="radio" name="applyInTeaching" value="இல்லை"> இல்லை</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-brain"></i> 8. இதுவரை நீங்கள் படித்த விஷயங்கள் உங்களது ஆசிரியர் பயிற்சியிலும் எதிர்காலப் பணியிலும் பயனுள்ளதாக இருக்கும் என நம்புகிறீர்களா?</label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="helpfulForTraining" value="ஆம்" required> ஆம்</label>
+            <label class="radio-option"><input type="radio" name="helpfulForTraining" value="இல்லை"> இல்லை</label>
+          </div>
+
+<p>Please , konjam honest ah answer pannunga, oruv vela ungaluku answer change or modify pananumnaalum ipave correct pannitu submit kudukalam</p>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <i class="fa-solid fa-paper-plane"></i> சமர்ப்பிக்கவும்
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Redirecting Timer Popup Modal -->
+  <div class="modal-overlay" id="timerModal">
+    <div class="modal-card">
+      <div class="icon-box timer-icon">
+        <i class="fa-brands fa-whatsapp"></i>
+      </div>
+      <h3>வாட்ஸ்அப் வழியே அனுப்பப்படுகிறது...</h3>
+      <p>இப்பொழுது நீங்கள் B.Ed தகவல்கள் Whatsapp Group Admin கு உள்ளிட்ட அனைத்து தகவல்களையும் அனுப்ப போகிறீர்கள்.</p>
+      <div class="timer-badge"><span id="countdown">10</span> வினாடிகள்</div>
+    </div>
+  </div>
+
+  <!-- Thank You Popup Modal -->
+  <div class="modal-overlay" id="thankYouModal">
+    <div class="modal-card">
+      <div class="icon-box">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h3>மிக்க நன்றி!</h3>
+      <p>உங்களது மதிப்புமிக்க கருத்துக்களுக்கும் பதில்களுக்கும் மனமார்ந்த நன்றிகள். இவை நமது செயலியைச் சிறந்த முறையில் உருவாக்கப் பெரிதும் உதவும்.</p>
+      <button class="btn-close" onclick="closeModal()"><i class="fa-solid fa-thumbs-up"></i> மகிழ்ச்சி</button>
+    </div>
+  </div>
+
+  <script>
+    const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+    const ADMIN_NUMBER = "919629981854";
+
+    function goToStep2() {
+      const nameInput = document.getElementById('studentName');
+      if (!nameInput.value.trim()) {
+        alert("தயவுசெய்து உங்கள் பெயரை உள்ளிடவும்.");
+        return;
+      }
+      document.getElementById('displayName').innerText = nameInput.value.trim();
+      document.getElementById('step1').classList.remove('active');
+      document.getElementById('step2').classList.add('active');
+    }
+
+    const form = document.getElementById('bedSurveyForm');
+    const timerModal = document.getElementById('timerModal');
+    const thankYouModal = document.getElementById('thankYouModal');
+    const submitBtn = document.getElementById('submitBtn');
+    const countdownEl = document.getElementById('countdown');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Collect field values
+      const name = document.getElementById('studentName').value.trim();
+      const features = document.getElementById('appFeatures').value.trim();
+      const challenges = document.getElementById('bedChallenges').value.trim();
+      const joinedByInterest = form.elements['joinedByInterest'].value;
+      const justForDegree = form.elements['justForDegree'].value;
+      const learnedSoFar = form.elements['learnedSoFar'].value;
+      const passIsEnough = form.elements['passIsEnough'].value;
+      const applyInTeaching = form.elements['applyInTeaching'].value;
+      const helpfulForTraining = form.elements['helpfulForTraining'].value;
+
+      // Construct WhatsApp prefilled message
+      const whatsappText = `🎓 *B.Ed மாணவர் கருத்துக்கணிப்பு* 🎓\n\n` +
+        `👤 *பெயர்:* ${name}\n\n` +
+        `1️⃣ *செயலி அம்சங்கள்:* ${features}\n\n` +
+        `2️⃣ *சந்திக்கப்பட்ட சவால்கள்:* ${challenges}\n\n` +
+        `3️⃣ *விரும்பி சேர்ந்தீர்களா?:* ${joinedByInterest}\n\n` +
+        `4️⃣ *பட்டப்படிப்புக்காக மட்டும் சேர்ந்தீர்களா?:* ${justForDegree}\n\n` +
+        `5️⃣ *சிறந்த கற்பித்தல் அனுபவம் கிடைத்துள்ளதா?:* ${learnedSoFar}\n\n` +
+        `6️⃣ *தேர்ச்சி பெற்றால் போதும் என நினைக்கிறீர்களா?:* ${passIsEnough}\n\n` +
+        `7️⃣ *ஆழமாகப் புரிந்து கற்பிக்க விரும்புகிறீர்களா?:* ${applyInTeaching}\n\n` +
+        `8️⃣ *எதிர்காலப் பணிக்கு பயனுள்ளதாக இருக்குமா?:* ${helpfulForTraining}`;
+
+      const waUrl = `https://wa.me/${ADMIN_NUMBER}?text=${encodeURIComponent(whatsappText)}`;
+
+      // Show Timer Modal
+      timerModal.classList.add('active');
+      let timeLeft = 10;
+      countdownEl.innerText = timeLeft;
+
+      const timerInterval = setInterval(() => {
+        timeLeft--;
+        countdownEl.innerText = timeLeft;
+
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          timerModal.classList.remove('active');
+          
+          // Open WhatsApp
+          window.open(waUrl, '_blank');
+
+          // Submit data in background if APPS script URL is provided
+          if (SCRIPT_URL && SCRIPT_URL !== "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
+            const formData = new FormData(form);
+            fetch(SCRIPT_URL, { method: 'POST', body: formData }).catch(err => console.log(err));
+          }
+
+          // Show Thank You modal after user opens WhatsApp
+          setTimeout(() => {
+            thankYouModal.classList.add('active');
+          }, 800);
+        }
+      }, 1000);
+    });
+
+    function closeModal() {
+      thankYouModal.classList.remove('active');
+      form.reset();
+      document.getElementById('step2').classList.remove('active');
+      document.getElementById('step1').classList.add('active');
+    }
+  </script>
+</body>
+</html>

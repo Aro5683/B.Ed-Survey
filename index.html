@@ -16,7 +16,6 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Vibrant Mesh Gradient Background */
     body { 
       background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
       background-attachment: fixed;
@@ -28,7 +27,6 @@
       overflow-x: hidden;
     }
     
-    /* Responsive Glassmorphism Card */
     .glass-card { 
       background: rgba(255, 255, 255, 0.75); 
       backdrop-filter: blur(16px);
@@ -67,7 +65,6 @@
       line-height: 1.5; 
     }
     
-    /* Welcome Box - Mobile Optimized */
     .welcome-box { 
       background: rgba(255, 255, 255, 0.85); 
       border-left: 4px solid #6c5ce7; 
@@ -154,7 +151,6 @@
       min-height: 100px; 
     }
     
-    /* Flexible Radio Group for Mobile Screens */
     .radio-group { 
       display: flex; 
       flex-wrap: wrap;
@@ -212,11 +208,9 @@
       transform: scale(0.98);
     }
     
-    /* Step Display Logic */
     .step { display: none; }
     .step.active { display: block; }
 
-    /* Glassmorphism Popup Modal */
     .modal-overlay { 
       position: fixed; 
       top: 0; 
@@ -274,7 +268,7 @@
 
     .icon-box.timer-icon {
       background: #e0f2fe;
-      color: #0284c7;
+      color: #25D366;
     }
 
     .modal-card h3 { 
@@ -301,6 +295,28 @@
       border-radius: 50px;
       margin-top: 5px;
       border: 1px solid rgba(108, 92, 231, 0.2);
+    }
+
+    .btn-wa {
+      background: #25D366;
+      color: #ffffff;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+      margin-top: 10px;
+    }
+
+    .btn-wa:active {
+      transform: scale(0.98);
     }
     
     .btn-close { 
@@ -425,15 +441,24 @@
     </form>
   </div>
 
-  <!-- Redirecting Timer Popup Modal -->
+  <!-- Redirecting / WhatsApp Action Modal -->
   <div class="modal-overlay" id="timerModal">
     <div class="modal-card">
       <div class="icon-box timer-icon">
         <i class="fa-brands fa-whatsapp"></i>
       </div>
-      <h3>வாட்ஸ்அப் வழியே அனுப்பப்படுகிறது...</h3>
-      <p>இப்பொழுது உங்களது B.Ed கருத்துக்கணிப்புத் தகவல்கள் Whatsapp Group Admin-க்கு அனுப்பப்படவுள்ளன.</p>
-      <div class="timer-badge"><span id="countdown">10</span> வினாடிகள்</div>
+      <h3 id="modalTitle">வாட்ஸ்அப் தயாராகிறது...</h3>
+      <p id="modalDesc">உங்களது கருத்துக்கணிப்புத் தகவல்கள் வாட்ஸ்அப் வழியாக அனுப்பத் தயாராகிறது.</p>
+      
+      <div id="countdownBox">
+        <div class="timer-badge"><span id="countdown">5</span> வினாடிகள்</div>
+      </div>
+
+      <div id="actionBox" style="display: none;">
+        <button class="btn-wa" id="waDirectBtn">
+          <i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப்பில் அனுப்பவும்
+        </button>
+      </div>
     </div>
   </div>
 
@@ -444,7 +469,7 @@
         <i class="fa-solid fa-circle-check"></i>
       </div>
       <h3>மிக்க நன்றி!</h3>
-      <p>உங்களது மதிப்புமிக்க கருத்துக்களுக்கும் பதில்களுக்கும் மனமார்ந்த நன்றிகள்.</p>
+      <p>உங்களது மதிப்புமிက် கருத்துக்களுக்கும் பதில்களுக்கும் மனமார்ந்த நன்றிகள்.</p>
       <button class="btn-close" onclick="closeModal()"><i class="fa-solid fa-thumbs-up"></i> மகிழ்ச்சி</button>
     </div>
   </div>
@@ -452,6 +477,7 @@
   <script>
     const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
     const ADMIN_NUMBER = "919629981854";
+    let targetWaUrl = "";
 
     function goToStep2() {
       const nameInput = document.getElementById('studentName');
@@ -469,11 +495,15 @@
     const timerModal = document.getElementById('timerModal');
     const thankYouModal = document.getElementById('thankYouModal');
     const countdownEl = document.getElementById('countdown');
+    const countdownBox = document.getElementById('countdownBox');
+    const actionBox = document.getElementById('actionBox');
+    const waDirectBtn = document.getElementById('waDirectBtn');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Collect field values
       const name = document.getElementById('studentName').value.trim();
       const features = document.getElementById('appFeatures').value.trim();
       const challenges = document.getElementById('bedChallenges').value.trim();
@@ -484,7 +514,6 @@
       const applyInTeaching = form.elements['applyInTeaching'].value;
       const helpfulForTraining = form.elements['helpfulForTraining'].value;
 
-      // Construct WhatsApp prefilled message
       const whatsappText = `🎓 *B.Ed மாணவர் கருத்துக்கணிப்பு* 🎓\n\n` +
         `👤 *பெயர்:* ${name}\n\n` +
         `1️⃣ *செயலி அம்சங்கள்:* ${features}\n\n` +
@@ -496,11 +525,17 @@
         `7️⃣ *ஆழமாகப் புரிந்து கற்பிக்க விரும்புகிறீர்களா?:* ${applyInTeaching}\n\n` +
         `8️⃣ *எதிர்காலப் பணிக்கு பயனுள்ளதாக இருக்குமா?:* ${helpfulForTraining}`;
 
-      const waUrl = `https://wa.me/${ADMIN_NUMBER}?text=${encodeURIComponent(whatsappText)}`;
+      targetWaUrl = `https://wa.me/${ADMIN_NUMBER}?text=${encodeURIComponent(whatsappText)}`;
+
+      // Reset modal view
+      modalTitle.innerText = "வாட்ஸ்அப் தயாராகிறது...";
+      modalDesc.innerText = "உங்களது கருத்துக்கணிப்புத் தகவல்கள் வாட்ஸ்அப் வழியாக அனுப்பத் தயாராகிறது.";
+      countdownBox.style.display = "block";
+      actionBox.style.display = "none";
 
       // Show Timer Modal
       timerModal.classList.add('active');
-      let timeLeft = 10;
+      let timeLeft = 5;
       countdownEl.innerText = timeLeft;
 
       const timerInterval = setInterval(() => {
@@ -509,23 +544,32 @@
 
         if (timeLeft <= 0) {
           clearInterval(timerInterval);
-          timerModal.classList.remove('active');
           
-          // Open WhatsApp
-          window.open(waUrl, '_blank');
+          // Show explicit button to bypass popup blocking
+          modalTitle.innerText = "தகவல் தயார்!";
+          modalDesc.innerText = "கீழே உள்ள பொத்தானைக் கிளிக் செய்து வாட்ஸ்அப்பில் தகவலை அனுப்பவும்.";
+          countdownBox.style.display = "none";
+          actionBox.style.display = "block";
 
-          // Submit data in background if APPS script URL is provided
+          // Background submit if configured
           if (SCRIPT_URL && SCRIPT_URL !== "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
             const formData = new FormData(form);
             fetch(SCRIPT_URL, { method: 'POST', body: formData }).catch(err => console.log(err));
           }
-
-          // Show Thank You modal after user opens WhatsApp
-          setTimeout(() => {
-            thankYouModal.classList.add('active');
-          }, 800);
         }
       }, 1000);
+    });
+
+    // Handle user click to bypass popup blockers cleanly
+    waDirectBtn.addEventListener('click', function() {
+      if (targetWaUrl) {
+        window.location.href = targetWaUrl;
+        
+        setTimeout(() => {
+          timerModal.classList.remove('active');
+          thankYouModal.classList.add('active');
+        }, 1000);
+      }
     });
 
     function closeModal() {

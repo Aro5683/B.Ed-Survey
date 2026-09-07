@@ -2,7 +2,7 @@
 <html lang="ta">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>B.Ed மாணவர் கருத்துக்கணிப்பு</title>
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,10 +12,11 @@
       box-sizing: border-box; 
       margin: 0; 
       padding: 0; 
-      font-family: 'Segoe UI', 'Latha', 'Tamil Sangam MN', sans-serif; 
+      font-family: 'Segoe UI', 'Latha', 'Tamil Sangam MN', -apple-system, BlinkMacSystemFont, sans-serif; 
+      -webkit-tap-highlight-color: transparent;
     }
 
-    /* Vibrant Mesh Gradient Background for Glassmorphism */
+    /* Vibrant Mesh Gradient Background */
     body { 
       background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
       background-attachment: fixed;
@@ -23,169 +24,192 @@
       display: flex; 
       align-items: center; 
       justify-content: center; 
-      padding: 30px 15px; 
+      padding: 12px 10px; 
+      overflow-x: hidden;
     }
     
-    /* Premium Glassmorphism Card */
+    /* Responsive Glassmorphism Card */
     .glass-card { 
-      background: rgba(255, 255, 255, 0.65); 
+      background: rgba(255, 255, 255, 0.75); 
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.8); 
+      border: 1px solid rgba(255, 255, 255, 0.9); 
       width: 100%; 
       max-width: 680px; 
-      padding: 40px; 
-      border-radius: 24px; 
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); 
+      padding: 20px 16px; 
+      border-radius: 20px; 
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
+    }
+
+    @media (min-width: 480px) {
+      .glass-card {
+        padding: 30px 25px;
+        border-radius: 24px;
+      }
     }
 
     .form-header { 
       text-align: center; 
-      margin-bottom: 30px; 
+      margin-bottom: 20px; 
     }
 
     .form-header h2 { 
       color: #2b2d42; 
-      font-size: 1.8rem; 
-      margin-bottom: 8px; 
+      font-size: 1.35rem; 
+      margin-bottom: 6px; 
       font-weight: 700;
+      line-height: 1.3;
     }
 
     .form-header p { 
       color: #52575d; 
-      font-size: 0.95rem; 
-      line-height: 1.6; 
+      font-size: 0.88rem; 
+      line-height: 1.5; 
     }
     
-    /* Light Frosted Welcome Box */
+    /* Welcome Box - Mobile Optimized */
     .welcome-box { 
-      background: rgba(255, 255, 255, 0.7); 
+      background: rgba(255, 255, 255, 0.85); 
       border-left: 4px solid #6c5ce7; 
-      padding: 22px; 
+      padding: 14px; 
       border-radius: 12px; 
-      margin-bottom: 30px; 
+      margin-bottom: 20px; 
       color: #2d3436; 
-      line-height: 1.8; 
-      font-size: 0.98rem; 
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      line-height: 1.6; 
+      font-size: 0.9rem; 
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
 
     .experience-insights {
-      margin-top: 15px;
-      padding-top: 15px;
+      margin-top: 12px;
+      padding-top: 12px;
       border-top: 1px dashed rgba(108, 92, 231, 0.3);
     }
 
     .experience-insights h4 {
       color: #6c5ce7;
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       margin-bottom: 8px;
     }
 
     .experience-insights ul {
-      margin-left: 20px;
+      margin-left: 18px;
       margin-bottom: 10px;
     }
 
     .experience-insights li {
       margin-bottom: 6px;
+      font-size: 0.88rem;
     }
     
     .form-group { 
-      margin-bottom: 26px; 
+      margin-bottom: 20px; 
     }
 
     .form-group label { 
       display: block; 
       font-weight: 600; 
       color: #2d3436; 
-      margin-bottom: 12px; 
-      line-height: 1.6; 
-      font-size: 1rem;
+      margin-bottom: 8px; 
+      line-height: 1.5; 
+      font-size: 0.92rem;
     }
 
     .form-group label i { 
-      margin-right: 8px; 
+      margin-right: 6px; 
       color: #6c5ce7; 
+    }
+
+    .note-text {
+      font-size: 0.85rem;
+      color: #4b5563;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 12px;
+      line-height: 1.4;
+      border: 1px solid rgba(108, 92, 231, 0.15);
     }
     
     .form-control { 
       width: 100%; 
-      padding: 14px 18px; 
-      background: rgba(255, 255, 255, 0.8); 
-      border: 1.5px solid rgba(200, 200, 200, 0.5); 
+      padding: 12px 14px; 
+      background: rgba(255, 255, 255, 0.9); 
+      border: 1.5px solid rgba(200, 200, 200, 0.6); 
       border-radius: 12px; 
       color: #2d3436; 
-      font-size: 1rem; 
+      font-size: 0.95rem; 
       transition: all 0.3s ease; 
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
     }
 
     .form-control:focus { 
       outline: none; 
       border-color: #6c5ce7; 
       background: #ffffff;
-      box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.15);
+      box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15);
     }
 
     textarea.form-control { 
       resize: vertical; 
-      min-height: 120px; 
+      min-height: 100px; 
     }
     
+    /* Flexible Radio Group for Mobile Screens */
     .radio-group { 
       display: flex; 
-      gap: 30px; 
-      margin-top: 10px; 
+      flex-wrap: wrap;
+      gap: 10px; 
+      margin-top: 6px; 
     }
 
     .radio-option { 
       display: flex; 
       align-items: center; 
-      gap: 10px; 
+      gap: 8px; 
       font-weight: 600; 
       cursor: pointer; 
       color: #4a5568; 
-      background: rgba(255, 255, 255, 0.5);
-      padding: 8px 18px;
-      border-radius: 20px;
-      border: 1px solid rgba(220, 220, 220, 0.6);
+      background: rgba(255, 255, 255, 0.75);
+      padding: 10px 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(200, 200, 200, 0.6);
+      font-size: 0.95rem;
+      flex: 1 1 120px;
+      justify-content: center;
       transition: all 0.2s ease;
     }
 
-    .radio-option:hover {
-      background: rgba(255, 255, 255, 0.9);
+    .radio-option:active {
+      transform: scale(0.98);
     }
 
     .radio-option input[type="radio"] { 
       accent-color: #6c5ce7; 
       width: 18px; 
       height: 18px; 
-      cursor: pointer; 
     }
     
     .btn-submit { 
       width: 100%; 
-      padding: 16px; 
+      padding: 14px; 
       background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%); 
       color: #ffffff; 
       border: none; 
       border-radius: 12px; 
-      font-size: 1.1rem; 
+      font-size: 1rem; 
       font-weight: 600; 
       cursor: pointer; 
       transition: all 0.3s ease; 
       display: flex; 
       justify-content: center; 
       align-items: center; 
-      gap: 10px; 
-      box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+      gap: 8px; 
+      box-shadow: 0 6px 16px rgba(108, 92, 231, 0.3);
       margin-top: 15px; 
     }
 
-    .btn-submit:hover { 
-      transform: translateY(-2px);
-      box-shadow: 0 12px 25px rgba(108, 92, 231, 0.4);
+    .btn-submit:active { 
+      transform: scale(0.98);
     }
     
     /* Step Display Logic */
@@ -199,7 +223,7 @@
       left: 0; 
       width: 100%; 
       height: 100%; 
-      background: rgba(0, 0, 0, 0.3); 
+      background: rgba(0, 0, 0, 0.4); 
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       display: flex; 
@@ -209,6 +233,7 @@
       visibility: hidden; 
       transition: all 0.3s ease; 
       z-index: 1000; 
+      padding: 15px;
     }
 
     .modal-overlay.active { 
@@ -217,85 +242,77 @@
     } 
     
     .modal-card { 
-      background: rgba(255, 255, 255, 0.85); 
+      background: rgba(255, 255, 255, 0.92); 
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.9); 
-      padding: 40px; 
-      border-radius: 24px; 
+      padding: 25px 20px; 
+      border-radius: 20px; 
       text-align: center; 
-      max-width: 460px; 
-      width: 90%; 
-      transform: scale(0.8); 
+      max-width: 400px; 
+      width: 100%; 
+      transform: scale(0.85); 
       transition: transform 0.3s ease; 
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     }
 
     .modal-overlay.active .modal-card { transform: scale(1); }
     
     .icon-box { 
-      width: 85px; 
-      height: 85px; 
+      width: 70px; 
+      height: 70px; 
       background: #e8f5e9; 
       color: #2e7d32; 
       border-radius: 50%; 
       display: flex; 
       align-items: center; 
       justify-content: center; 
-      font-size: 2.8rem; 
-      margin: 0 auto 20px; 
+      font-size: 2.2rem; 
+      margin: 0 auto 15px; 
       animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-      box-shadow: 0 10px 20px rgba(46, 125, 50, 0.15);
     }
 
     .icon-box.timer-icon {
       background: #e0f2fe;
       color: #0284c7;
-      box-shadow: 0 10px 20px rgba(2, 132, 199, 0.15);
     }
 
     .modal-card h3 { 
       color: #2d3436; 
-      font-size: 1.6rem; 
-      margin-bottom: 12px; 
+      font-size: 1.3rem; 
+      margin-bottom: 10px; 
       font-weight: 700;
     }
 
     .modal-card p { 
       color: #636e72; 
-      font-size: 1rem; 
-      margin-bottom: 20px; 
-      line-height: 1.7; 
+      font-size: 0.9rem; 
+      margin-bottom: 15px; 
+      line-height: 1.5; 
     }
 
     .timer-badge {
       display: inline-block;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: 800;
       color: #6c5ce7;
       background: rgba(108, 92, 231, 0.1);
-      padding: 8px 24px;
+      padding: 6px 20px;
       border-radius: 50px;
-      margin-top: 10px;
+      margin-top: 5px;
       border: 1px solid rgba(108, 92, 231, 0.2);
     }
     
     .btn-close { 
       background: #2e7d32; 
       color: #ffffff; 
-      padding: 12px 35px; 
+      padding: 12px 30px; 
       border: none; 
-      border-radius: 12px; 
-      font-size: 1rem; 
+      border-radius: 10px; 
+      font-size: 0.95rem; 
       font-weight: 600; 
       cursor: pointer; 
-      transition: all 0.2s; 
-      box-shadow: 0 4px 12px rgba(46, 125, 50, 0.25);
-    }
-
-    .btn-close:hover { 
-      background: #1b5e20; 
-      transform: translateY(-1px);
+      width: 100%;
     }
 
     @keyframes popIn {
@@ -309,7 +326,7 @@
 
   <div class="glass-card">
     <div class="form-header">
-      <h2><i class="fa-solid fa-graduation-cap"></i> B.Ed மாணவர்களுக்கான கருத்துக்கணிப்பு</h2>
+      <h2><i class="fa-solid fa-graduation-cap"></i> B.Ed மாணவர் கருத்துக்கணிப்பு</h2>
       <p>உங்கள் கற்றல் அனுபவங்களையும் தேவைகளையும் பகிர்வதற்கான ஒரு சிறப்பு தளம்.</p>
     </div>
 
@@ -319,7 +336,7 @@
       <div class="step active" id="step1">
         <div class="form-group">
           <label for="studentName"><i class="fa-solid fa-user-pen"></i> உங்கள் பெயர்</label>
-          <input type="text" id="studentName" name="studentName" class="form-control" placeholder="உங்கள் முழு பெயரை உள்ளிடவும்..." required>
+          <input type="text" id="studentName" name="studentName" class="form-control" placeholder="உங்கள் முழு பெயரை உள்ளிடவும்..." required autocomplete="off">
         </div>
         <button type="button" class="btn-submit" onclick="goToStep2()">
           தொடரவும் <i class="fa-solid fa-arrow-right"></i>
@@ -330,7 +347,7 @@
       <div class="step" id="step2">
         <div class="welcome-box">
           <p><strong><span id="displayName"></span> அவர்களுக்கு வணக்கம்!</strong></p>
-          <p style="margin-top: 10px;">நமது வாட்ஸ்அப் குழுவில் B.Ed மாணவர்கள் பயன்பெறும் வகையில் முக்கிய வினாக்கள், விடைகள், முந்தைய ஆண்டின் வினாத்தாள்கள், TNTEU சுற்றறிக்கைகள் மற்றும் பதிவுப் குறிப்பேடு (Record Note) PDF-கள் ஆகியவற்றைத் தொடர்ச்சியாகப் பகிர்ந்து வழிகாட்டி வருகிறோம்.</p>
+          <p style="margin-top: 8px;">நமது வாட்ஸ்அப் குழுவில் B.Ed மாணவர்கள் பயன்பெறும் வகையில் முக்கிய வினாக்கள், விடைகள், முந்தைய ஆண்டின் வினாத்தாள்கள், TNTEU சுற்றறிக்கைகள் மற்றும் பதிவுப் குறிப்பேடு (Record Note) PDF-கள் ஆகியவற்றைத் தொடர்ச்சியாகப் பகிர்ந்து வழிகாட்டி வருகிறோம்.</p>
           
           <div class="experience-insights">
             <h4><i class="fa-solid fa-chalkboard-user"></i> இன்றைய B.Ed கல்விச் சூழல் பற்றிய பார்வை:</h4>
@@ -344,13 +361,13 @@
           </div>
         </div>
 
-               <div class="form-group">
+        <div class="form-group">
           <label for="appFeatures"><i class="fa-solid fa-lightbulb"></i> 1. உருவாக்கப்படவுள்ள இந்தச் செயலியில் என்னென்ன அம்சங்கள் இருக்க வேண்டும் என எதிர்பார்க்கிறீர்கள்?</label>
           <textarea id="appFeatures" name="appFeatures" class="form-control" placeholder="உங்கள் கருத்துக்களை இங்கே விரிவாகப் பதிவு செய்யவும்..." required></textarea>
         </div>
 
         <div class="form-group">
-          <label for="bedChallenges"><i class="fa-solid fa-triangle-exclamation"></i> 2. B.Ed படிப்பில் நீங்கள் சந்திக்கும் சவால்கள் என்னென்ன? (எ.கா: பாடங்கள் சரியாகப் புரியவில்லை, கற்றல் புத்தகங்கள் கிடைக்கவில்லை etc.,)</label>
+          <label for="bedChallenges"><i class="fa-solid fa-triangle-exclamation"></i> 2. B.Ed படிப்பில் நீங்கள் சந்திக்கும் சவால்கள் என்னென்ன? (எ.கா: பாடங்கள் சரியாகப் புரியவில்லை, கற்றல் புத்தகங்கள் கிடைக்கவில்லை)</label>
           <textarea id="bedChallenges" name="bedChallenges" class="form-control" placeholder="உங்கள் கருத்துக்களை இங்கே விரிவாகப் பதிவு செய்யவும்..." required></textarea>
         </div>
 
@@ -401,7 +418,7 @@
             <label class="radio-option"><input type="radio" name="helpfulForTraining" value="இல்லை"> இல்லை</label>
           </div>
 
-<p>Please , konjam honest ah answer pannunga, oruv vela ungaluku answer change or modify pananumnaalum ipave correct pannitu submit kudukalam</p>
+          <p class="note-text"><i class="fa-solid fa-circle-info"></i> தயவுசெய்து நேர்மையான பதில்களை அளிக்கவும். உங்களது பதில்களை மாற்றவோ திருத்தவோ விரும்பினால், இப்போதே சரிசெய்துவிட்டு பிறகு சமர்ப்பிக்கலாம்.</p>
         </div>
 
         <button type="submit" class="btn-submit" id="submitBtn">
@@ -419,7 +436,7 @@
         <i class="fa-brands fa-whatsapp"></i>
       </div>
       <h3>வாட்ஸ்அப் வழியே அனுப்பப்படுகிறது...</h3>
-      <p>இப்பொழுது நீங்கள் B.Ed தகவல்கள் Whatsapp Group Admin கு உள்ளிட்ட அனைத்து தகவல்களையும் அனுப்ப போகிறீர்கள்.</p>
+      <p>இப்பொழுது உங்களது B.Ed கருத்துக்கணிப்புத் தகவல்கள் Whatsapp Group Admin-க்கு அனுப்பப்படவுள்ளன.</p>
       <div class="timer-badge"><span id="countdown">10</span> வினாடிகள்</div>
     </div>
   </div>
@@ -431,7 +448,7 @@
         <i class="fa-solid fa-circle-check"></i>
       </div>
       <h3>மிக்க நன்றி!</h3>
-      <p>உங்களது மதிப்புமிக்க கருத்துக்களுக்கும் பதில்களுக்கும் மனமார்ந்த நன்றிகள். இவை நமது செயலியைச் சிறந்த முறையில் உருவாக்கப் பெரிதும் உதவும்.</p>
+      <p>உங்களது மதிப்புமிக்க கருத்துக்களுக்கும் பதில்களுக்கும் மனமார்ந்த நன்றிகள்.</p>
       <button class="btn-close" onclick="closeModal()"><i class="fa-solid fa-thumbs-up"></i> மகிழ்ச்சி</button>
     </div>
   </div>
@@ -449,12 +466,12 @@
       document.getElementById('displayName').innerText = nameInput.value.trim();
       document.getElementById('step1').classList.remove('active');
       document.getElementById('step2').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     const form = document.getElementById('bedSurveyForm');
     const timerModal = document.getElementById('timerModal');
     const thankYouModal = document.getElementById('thankYouModal');
-    const submitBtn = document.getElementById('submitBtn');
     const countdownEl = document.getElementById('countdown');
 
     form.addEventListener('submit', function(e) {
@@ -520,6 +537,7 @@
       form.reset();
       document.getElementById('step2').classList.remove('active');
       document.getElementById('step1').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
 </body>
